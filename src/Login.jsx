@@ -5,21 +5,40 @@ export default class Login extends React.PureComponent {
         super(props);
 
         this.state = {
-            userName: ''
+            userName: '',
+            password: ''
         };
     }
 
-    handleInputChange = value => {
+    handleUserNameChange = value => {
         console.log(value);
         this.setState({ userName: value });        
     };
 
+    handlePasswordChange = value => {
+        console.log(value);
+        this.setState({ password: value });        
+    };
+
+    handleSubmit = e => {
+        e.preventDefault();
+        console.log(JSON.stringify(this.state));
+    }
+
     render() {
-        const {userName} = this.state;
+        const {userName, password} = this.state;
 
         return (
-            <form>
-                <input type="text" name="userName" value={userName} onChange={({target}) => this.handleInputChange(target.value)} />
+            <form onSubmit={this.handleSubmit}>
+                <fieldset>
+                    <label htmlFor="userName">Username</label>
+                    <input type="text" name="userName" value={userName} onChange={({target}) => this.handleUserNameChange(target.value)} />
+                    <br />
+                    <label htmlFor="password">Password</label>
+                    <input type="password" name="password" value={atob(password)} onChange={({target}) => this.handlePasswordChange(btoa(target.value))} />
+                    <br />
+                    <input type="submit" value="Submit" />
+                </fieldset>
             </form>
         );
     }
