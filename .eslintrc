@@ -33,7 +33,7 @@
                 "selfClosing": "after-props"
             }
         ],
-        "react/jsx-quotes": [
+        "jsx-quotes": [
             "error",
             "prefer-double"
         ],
