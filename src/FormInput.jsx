@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-export const FormInput = ({ inputName, label, inputType, value, placeholder, changeFn }) => (
+export const FormInput = ({ inputName, label, inputType='text', value, placeholder, changeFn }) => (
     <Fragment>
         {
             label && <label htmlFor={inputName}>{label}</label>

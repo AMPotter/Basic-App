@@ -31,12 +31,15 @@ export default class Login extends React.PureComponent {
                     <FormInput 
                         inputName="userName" 
                         label="Username"
-                        inputType="text"
                         value={userName}
                         changeFn={({target}) => this.handleInputChange({userName: target.value})} />
                     <br />
-                    <label htmlFor="password">Password</label>
-                    <input type="password" name="password" value={atob(password)} onChange={({target}) => this.handleInputChange({password: btoa(target.value)})} />
+                    <FormInput
+                        inputName="password"
+                        label="Password"
+                        inputType="password"
+                        value={password}
+                        changeFn={({target}) => this.handleInputChange({password: target.value})} />
                     <br />
                     <input type="submit" value="Submit" />
                     <Link to="/register">Not a user?</Link>
