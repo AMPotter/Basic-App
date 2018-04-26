@@ -34,7 +34,7 @@ export default class ForgotPassword extends React.PureComponent {
                         onChange={({target}) => this.handleInputChange({email: target.value})} />
                     <br />
                     <input type="submit" value="Submit" />
-                    <Link to="/login">Not a user?</Link>
+                    <Link to="/register">Not a user?</Link>
                 </fieldset>
             </form>
         );

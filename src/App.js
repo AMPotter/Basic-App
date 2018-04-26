@@ -5,6 +5,7 @@ import Login from './Login';
 import Register from './Register';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import ForgotPassword from './ForgotPassword';
+import AuthComponent from './AuthComponent';
 
 const App = (props) => (
     <div className="App">
@@ -15,6 +16,7 @@ const App = (props) => (
         <Router >
             <Switch >
                 <Route exact path="/" render={() => <div>You are home!</div>} />
+                <Route path="/auth/:view" component={AuthComponent} />
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
                 <Route path="/forgotpassword" component={ForgotPassword} />
