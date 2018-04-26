@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Login extends React.PureComponent {
     constructor(props) {
@@ -11,22 +12,21 @@ export default class Login extends React.PureComponent {
     }
 
     handleUserNameChange = value => {
-        console.log(value);
         this.setState({ userName: value });        
     };
 
     handlePasswordChange = value => {
-        console.log(value);
         this.setState({ password: value });        
     };
 
     handleSubmit = e => {
+        const { submitFn } = this.props;
         e.preventDefault();
-        console.log(JSON.stringify(this.state));
+        if(submitFn) submitFn(this.state);
     }
 
     render() {
-        const {userName, password} = this.state;
+        const { userName, password } = this.state;
 
         return (
             <form onSubmit={this.handleSubmit}>
@@ -38,6 +38,7 @@ export default class Login extends React.PureComponent {
                     <input type="password" name="password" value={atob(password)} onChange={({target}) => this.handlePasswordChange(btoa(target.value))} />
                     <br />
                     <input type="submit" value="Submit" />
+                    <Link to="/register">Not a user?</Link>
                 </fieldset>
             </form>
         );
