@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FormInput } from './FormInput';
 
 export default class Login extends React.PureComponent {
     constructor(props) {
@@ -27,8 +28,12 @@ export default class Login extends React.PureComponent {
         return (
             <form onSubmit={this.handleSubmit}>
                 <fieldset>
-                    <label htmlFor="userName">Username</label>
-                    <input type="text" name="userName" value={userName} onChange={({target}) => this.handleInputChange({userName: target.value})} />
+                    <FormInput 
+                        inputName="userName" 
+                        label="Username"
+                        inputType="text"
+                        value={userName}
+                        changeFn={({target}) => this.handleInputChange({userName: target.value})} />
                     <br />
                     <label htmlFor="password">Password</label>
                     <input type="password" name="password" value={atob(password)} onChange={({target}) => this.handleInputChange({password: btoa(target.value)})} />
