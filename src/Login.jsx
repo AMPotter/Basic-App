@@ -11,8 +11,8 @@ export default class Login extends React.PureComponent {
         };
     }
 
-    handleInputChange = (name, value) => {
-        this.setState({ [name]: value });
+    handleInputChange = (userInput) => {
+        this.setState(prevState => Object.assign({}, prevState, userInput));
     };
 
     handleSubmit = e => {
@@ -28,10 +28,10 @@ export default class Login extends React.PureComponent {
             <form onSubmit={this.handleSubmit}>
                 <fieldset>
                     <label htmlFor="userName">Username</label>
-                    <input type="text" name="userName" value={userName} onChange={({target}) => this.handleInputChange('userName', target.value)} />
+                    <input type="text" name="userName" value={userName} onChange={({target}) => this.handleInputChange({userName: target.value})} />
                     <br />
                     <label htmlFor="password">Password</label>
-                    <input type="password" name="password" value={atob(password)} onChange={({target}) => this.handleInputChange('password', btoa(target.value))} />
+                    <input type="password" name="password" value={atob(password)} onChange={({target}) => this.handleInputChange({password: btoa(target.value)})} />
                     <br />
                     <input type="submit" value="Submit" />
                     <Link to="/register">Not a user?</Link>

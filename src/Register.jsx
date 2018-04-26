@@ -13,8 +13,8 @@ export default class Register extends React.PureComponent {
         };
     }
 
-    handleInputChange = (name, value) => {
-        this.setState({ [name]: value });        
+    handleInputChange = (userInput) => {
+        this.setState(prevState => Object.assign({}, prevState, userInput));        
     };
 
     handleSubmit = e => {
@@ -34,28 +34,28 @@ export default class Register extends React.PureComponent {
                         type="text" 
                         name="userName" 
                         value={userName} 
-                        onChange={({target}) => this.handleInputChange('userName',target.value)} />
+                        onChange={({target}) => this.handleInputChange({userName: target.value})} />
                     <br />
                     <label htmlFor="email">Email</label>
                     <input 
                         type="text" 
                         name="email" 
                         value={email} 
-                        onChange={({target}) => this.handleInputChange('email',target.value)} />
+                        onChange={({target}) => this.handleInputChange({email: target.value})} />
                     <br />
                     <label htmlFor="password">Password</label>
                     <input 
                         type="text" 
                         name="password" 
                         value={atob(password)} 
-                        onChange={({target}) => this.handleInputChange('password', btoa(target.value))} />
+                        onChange={({target}) => this.handleInputChange({password: btoa(target.value)})} />
                     <br />
                     <label htmlFor="confirmPassword">Confirm Password</label>
                     <input 
                         type="password" 
                         name="confirmPassword" 
                         value={atob(confirmPassword)} 
-                        onChange={({target}) => this.handleInputChange('confirmPassword', btoa(target.value))} />
+                        onChange={({target}) => this.handleInputChange({confirmPassword: btoa(target.value)})} />
                     <br />
                     <input type="submit" value="Submit" />
                     <Link to="/login">Already a user?</Link>
