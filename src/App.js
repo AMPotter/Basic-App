@@ -4,6 +4,7 @@ import './App.css';
 import Login from './Login';
 import Register from './Register';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import ForgotPassword from './ForgotPassword';
 
 const App = (props) => (
     <div className="App">
@@ -16,6 +17,7 @@ const App = (props) => (
                 <Route exact path="/" render={() => <div>You are home!</div>} />
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
+                <Route path="/forgotpassword" component={ForgotPassword} />
                 <Redirect to="/" />
             </Switch>
         </Router>
